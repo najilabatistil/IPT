@@ -1,0 +1,1404 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (arena.cpp:79), pid=43336, tid=43040
+#
+# JRE version: OpenJDK Runtime Environment Temurin-17.0.10+7 (17.0.10+7) (build 17.0.10+7)
+# Java VM: OpenJDK 64-Bit Server VM Temurin-17.0.10+7 (17.0.10+7, mixed mode, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages Home
+
+Host: AMD Ryzen 5 3550H with Radeon Vega Mobile Gfx  , 8 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+Time: Thu Jun 20 23:32:40 2024 Taipei Standard Time elapsed time: 0.678370 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002abc5b6dec0):  JavaThread "Image Fetcher 0" daemon [_thread_in_Java, id=43040, stack(0x000000e5db200000,0x000000e5db300000)]
+
+Stack: [0x000000e5db200000,0x000000e5db300000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x67d2c9]
+V  [jvm.dll+0x834afa]
+V  [jvm.dll+0x8365be]
+V  [jvm.dll+0x836c23]
+V  [jvm.dll+0x2477ff]
+V  [jvm.dll+0xac711]
+V  [jvm.dll+0xacb5c]
+V  [jvm.dll+0x82b197]
+V  [jvm.dll+0x2541a0]
+V  [jvm.dll+0x253fd9]
+C  0x000002abb12d7059
+
+The last pc belongs to DeoptimizationBlob (printed below).
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+v  ~DeoptimizationBlob
+J 720 c1 sun.awt.image.PNGImageDecoder.filterRow([B[BIII)V java.desktop@17.0.10 (460 bytes) @ 0x000002aba9e6ed6d [0x000002aba9e6e020+0x0000000000000d4d]
+j  sun.awt.image.PNGImageDecoder.produceImage()V+947 java.desktop@17.0.10
+j  sun.awt.image.InputStreamImageSource.doFetch()V+51 java.desktop@17.0.10
+j  sun.awt.image.ImageFetcher.fetchloop()V+31 java.desktop@17.0.10
+j  sun.awt.image.ImageFetcher.run()V+5 java.desktop@17.0.10
+v  ~StubRoutines::call_stub
+--------------------------------------------------------------------------------
+Decoding CodeBlob, name: DeoptimizationBlob, at  [0x000002abb12d6ca0, 0x000002abb12d71c8]  1320 bytes
+[MachCode]
+  0x000002abb12d6ca0: 5548 8bec | 9c48 83ec | 0848 81ec | 8000 0000 | 4889 4424 | 7848 894c | 2470 4889 | 5424 6848 
+  0x000002abb12d6cc0: 895c 2460 | 4889 6c24 | 5048 8974 | 2448 4889 | 7c24 404c | 8944 2438 | 4c89 4c24 | 304c 8954 
+  0x000002abb12d6ce0: 2428 4c89 | 5c24 204c | 8964 2418 | 4c89 6c24 | 104c 8974 | 2408 4c89 | 3c24 4881 | ec80 0a00 
+  0x000002abb12d6d00: 0048 0fae | 0424 c4e3 | 7d19 8424 | 4002 0000 | 01c4 e37d | 198c 2450 | 0200 0001 | c4e3 7d19 
+  0x000002abb12d6d20: 9424 6002 | 0000 01c4 | e37d 199c | 2470 0200 | 0001 c4e3 | 7d19 a424 | 8002 0000 | 01c4 e37d 
+  0x000002abb12d6d40: 19ac 2490 | 0200 0001 | c4e3 7d19 | b424 a002 | 0000 01c4 | e37d 19bc | 24b0 0200 | 0001 c463 
+  0x000002abb12d6d60: 7d19 8424 | c002 0000 | 01c4 637d | 198c 24d0 | 0200 0001 | c463 7d19 | 9424 e002 | 0000 01c4 
+  0x000002abb12d6d80: 637d 199c | 24f0 0200 | 0001 c463 | 7d19 a424 | 0003 0000 | 01c4 637d | 19ac 2410 | 0300 0001 
+  0x000002abb12d6da0: c463 7d19 | b424 2003 | 0000 01c4 | 637d 19bc | 2430 0300 | 0001 c5f8 | 7748 83ec | 2041 be00 
+  0x000002abb12d6dc0: 0000 00e9 | 7402 0000 | 5548 8bec | 9c48 83ec | 0848 81ec | 8000 0000 | 4889 4424 | 7848 894c 
+  0x000002abb12d6de0: 2470 4889 | 5424 6848 | 895c 2460 | 4889 6c24 | 5048 8974 | 2448 4889 | 7c24 404c | 8944 2438 
+  0x000002abb12d6e00: 4c89 4c24 | 304c 8954 | 2428 4c89 | 5c24 204c | 8964 2418 | 4c89 6c24 | 104c 8974 | 2408 4c89 
+  0x000002abb12d6e20: 3c24 4881 | ec80 0a00 | 0048 0fae | 0424 c4e3 | 7d19 8424 | 4002 0000 | 01c4 e37d | 198c 2450 
+  0x000002abb12d6e40: 0200 0001 | c4e3 7d19 | 9424 6002 | 0000 01c4 | e37d 199c | 2470 0200 | 0001 c4e3 | 7d19 a424 
+  0x000002abb12d6e60: 8002 0000 | 01c4 e37d | 19ac 2490 | 0200 0001 | c4e3 7d19 | b424 a002 | 0000 01c4 | e37d 19bc 
+  0x000002abb12d6e80: 24b0 0200 | 0001 c463 | 7d19 8424 | c002 0000 | 01c4 637d | 198c 24d0 | 0200 0001 | c463 7d19 
+  0x000002abb12d6ea0: 9424 e002 | 0000 01c4 | 637d 199c | 24f0 0200 | 0001 c463 | 7d19 a424 | 0003 0000 | 01c4 637d 
+  0x000002abb12d6ec0: 19ac 2410 | 0300 0001 | c463 7d19 | b424 2003 | 0000 01c4 | 637d 19bc | 2430 0300 | 0001 c5f8 
+  0x000002abb12d6ee0: 7748 83ec | 2041 be03 | 0000 00e9 | 4c01 0000 | 4989 97e8 | 0300 0049 | 8987 e003 | 0000 6800 
+  0x000002abb12d6f00: 0000 0055 | 488b ec9c | 4883 ec08 | 4881 ec80 | 0000 0048 | 8944 2478 | 4889 4c24 | 7048 8954 
+  0x000002abb12d6f20: 2468 4889 | 5c24 6048 | 896c 2450 | 4889 7424 | 4848 897c | 2440 4c89 | 4424 384c | 894c 2430 
+  0x000002abb12d6f40: 4c89 5424 | 284c 895c | 2420 4c89 | 6424 184c | 896c 2410 | 4c89 7424 | 084c 893c | 2448 81ec 
+  0x000002abb12d6f60: 800a 0000 | 480f ae04 | 24c4 e37d | 1984 2440 | 0200 0001 | c4e3 7d19 | 8c24 5002 | 0000 01c4 
+  0x000002abb12d6f80: e37d 1994 | 2460 0200 | 0001 c4e3 | 7d19 9c24 | 7002 0000 | 01c4 e37d | 19a4 2480 | 0200 0001 
+  0x000002abb12d6fa0: c4e3 7d19 | ac24 9002 | 0000 01c4 | e37d 19b4 | 24a0 0200 | 0001 c4e3 | 7d19 bc24 | b002 0000 
+  0x000002abb12d6fc0: 01c4 637d | 1984 24c0 | 0200 0001 | c463 7d19 | 8c24 d002 | 0000 01c4 | 637d 1994 | 24e0 0200 
+  0x000002abb12d6fe0: 0001 c463 | 7d19 9c24 | f002 0000 | 01c4 637d | 19a4 2400 | 0300 0001 | c463 7d19 | ac24 1003 
+  0x000002abb12d7000: 0000 01c4 | 637d 19b4 | 2420 0300 | 0001 c463 | 7d19 bc24 | 3003 0000 | 01c5 f877 | 4883 ec20 
+  0x000002abb12d7020: 41be 0100 | 0000 498b | 97e8 0300 | 0048 8955 | 0849 c787 | e803 0000 | 0000 0000 | c5f8 7749 
+  0x000002abb12d7040: 89a7 9802 | 0000 498b | cf41 8bd6 | 49ba b03f | eaef fc7f | 0000 41ff | d249 c787 | 9802 0000 
+  0x000002abb12d7060: 0000 0000 | 49c7 87a0 | 0200 0000 | 0000 00c5 | f877 488b | f844 8b77 | 3c41 83fe | 010f 8534 
+  0x000002abb12d7080: 0000 0049 | 8b87 e003 | 0000 498b | 97e8 0300 | 0049 c787 | e003 0000 | 0000 0000 | 49c7 87e8 
+  0x000002abb12d70a0: 0300 0000 | 0000 0048 | 8984 2418 | 0b00 0048 | 8994 2408 | 0b00 00c5 | fb10 8424 | c000 0000 
+  0x000002abb12d70c0: 488b 8424 | 180b 0000 | 488b 9424 | 080b 0000 | 4881 c438 | 0b00 008b | 0f48 03e1 | 488b 6f30 
+  0x000002abb12d70e0: 488b 4f18 | 4883 c408 | 488b 7710 | 8b57 084c | 8bc4 8b5f | 0448 2be3 | 488b 1e48 | 83eb 1048 
+  0x000002abb12d7100: ff31 5548 | 8bec 482b | e348 c745 | f000 0000 | 004c 8945 | f84c 8bc4 | 4883 c608 | 4883 c108 
+  0x000002abb12d7120: ffca 75d4 | 48ff 3155 | 488b ec48 | 81ec 300b | 0000 c5fb | 1184 24c0 | 0000 0048 | 8984 2418 
+  0x000002abb12d7140: 0b00 00c5 | f877 4989 | afa8 0200 | 0049 ba43 | 712d b1ab | 0200 004d | 8997 a002 | 0000 4989 
+  0x000002abb12d7160: a798 0200 | 0048 83e4 | f049 8bcf | 418b d649 | bae0 85ea | effc 7f00 | 0041 ffd2 | 498b a798 
+  0x000002abb12d7180: 0200 0049 | c787 9802 | 0000 0000 | 0000 49c7 | 87a8 0200 | 0000 0000 | 0049 c787 | a002 0000 
+  0x000002abb12d71a0: 0000 0000 | c5f8 77c5 | fb10 8424 | c000 0000 | 488b 8424 | 180b 0000 | 488b 9424 | 080b 0000 
+  0x000002abb12d71c0: c9c3 f4f4 | f4f4 f4f4 
+[/MachCode]
+--------------------------------------------------------------------------------
+
+
+Compiled method (c1)     714  720       3       sun.awt.image.PNGImageDecoder::filterRow (460 bytes)
+ total in heap  [0x000002aba9e6dd90,0x000002aba9e6f5b0] = 6176
+ relocation     [0x000002aba9e6dee8,0x000002aba9e6e008] = 288
+ main code      [0x000002aba9e6e020,0x000002aba9e6ee20] = 3584
+ stub code      [0x000002aba9e6ee20,0x000002aba9e6ee68] = 72
+ metadata       [0x000002aba9e6ee68,0x000002aba9e6ee70] = 8
+ scopes data    [0x000002aba9e6ee70,0x000002aba9e6f090] = 544
+ scopes pcs     [0x000002aba9e6f090,0x000002aba9e6f4d0] = 1088
+ dependencies   [0x000002aba9e6f4d0,0x000002aba9e6f4d8] = 8
+ nul chk table  [0x000002aba9e6f4d8,0x000002aba9e6f5b0] = 216
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder'
+  # this:     rdx:rdx   = 'sun/awt/image/PNGImageDecoder'
+  # parm0:    r8:r8     = '[B'
+  # parm1:    r9:r9     = '[B'
+  # parm2:    rdi       = int
+  # parm3:    rsi       = int
+  # parm4:    rcx       = int
+  #           [sp+0x80]  (sp of caller)
+  0x000002aba9e6e020: 448b 5208 | 49bb 0000 | 0000 0800 | 0000 4d03 | d34c 3bd0 
+
+  0x000002aba9e6e034: ;   {runtime_call ic_miss_stub}
+  0x000002aba9e6e034: 0f85 4630 | 4607 660f | 1f44 0000 
+[Verified Entry Point]
+  0x000002aba9e6e040: 8984 2400 | 90ff ff55 | 4883 ec70 | 488b da4c | 894c 2448 | 8974 2440 | 894c 2444 
+
+  0x000002aba9e6e05c: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e05c: 48ba d0af | bcc6 ab02 | 0000 8b82 | cc00 0000 | 83c0 0289 | 82cc 0000 | 0081 e0fe | 0700 0083 
+  0x000002aba9e6e07c: f800 0f84 | 720a 0000 
+
+  0x000002aba9e6e084: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e084: 48ba d0af | bcc6 ab02 | 0000 48b8 | 1801 0000 | 0000 0000 | 83ff 004c | 8bd8 48b8 | 2801 0000 
+  0x000002aba9e6e0a4: 0000 0000 | 490f 45c3 | 83ff 014c | 8bd8 48b8 | 3801 0000 | 0000 0000 | 490f 45c3 | 83ff 024c 
+  0x000002aba9e6e0c4: 8bd8 48b8 | 4801 0000 | 0000 0000 | 490f 45c3 | 83ff 034c | 8bd8 48b8 | 5801 0000 | 0000 0000 
+  0x000002aba9e6e0e4: 490f 45c3 | 83ff 044c | 8bd8 48b8 | 6801 0000 | 0000 0000 | 490f 45c3 | 4c8b 1c02 | 49ba 0100 
+  0x000002aba9e6e104: 0000 0000 | 0000 4d03 | da4c 891c | 0283 ff00 | 0f84 6b09 | 0000 83ff | 010f 8490 | 0800 0083 
+  0x000002aba9e6e124: ff02 0f84 | 8e07 0000 | 83ff 030f | 84d5 0400 | 0083 ff04 | 0f85 6a09 | 0000 4983 
+
+  0x000002aba9e6e140: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e140: f900 48ba | d0af bcc6 | ab02 0000 | 48b8 f002 | 0000 0000 | 0000 0f84 | 0a00 0000 | 48b8 0003 
+  0x000002aba9e6e160: 0000 0000 | 0000 488b | 3c02 488d | 7f01 4889 | 3c02 0f84 | cd03 0000 | ba00 0000 | 00e9 7a00 
+  0x000002aba9e6e180: 0000 660f | 1f44 0000 
+
+  0x000002aba9e6e188: ; implicit exception: dispatches to 0x000002aba9e6eb17
+  0x000002aba9e6e188: 413b 500c | 0f83 8f09 | 0000 4863 | c241 0fbe | 4400 1041 | 3b51 0c0f | 8394 0900 | 0048 63fa 
+  0x000002aba9e6e1a8: 410f be7c | 3910 03c7 | 4863 fa41 | 8844 3810 
+
+  0x000002aba9e6e1b8: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e1b8: ffc2 48b8 | d0af bcc6 | ab02 0000 | 8bb8 d000 | 0000 83c7 | 0289 b8d0 | 0000 0081 | e7fe 3f00 
+  0x000002aba9e6e1d8: 0083 ff00 | 0f84 6509 | 0000 4d8b | 9758 0300 
+
+  0x000002aba9e6e1e8: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@246 (line 509)
+                      ;   {poll}
+  0x000002aba9e6e1e8: 0041 8502 
+
+  0x000002aba9e6e1ec: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e1ec: 48b8 d0af | bcc6 ab02 | 0000 ff80 | 3003 0000 
+
+  0x000002aba9e6e1fc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e1fc: 3bd1 48b8 | d0af bcc6 | ab02 0000 | 48bf 2003 | 0000 0000 | 0000 0f8c | 0a00 0000 | 48bf 1003 
+  0x000002aba9e6e21c: 0000 0000 | 0000 488b | 1c38 488d | 5b01 4889 | 1c38 0f8c | 54ff ffff | 0f1f 4000 
+
+  0x000002aba9e6e238: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e238: 3bd6 48b8 | d0af bcc6 | ab02 0000 | 48bf 4803 | 0000 0000 | 0000 0f8d | 0a00 0000 | 48bf 5803 
+  0x000002aba9e6e258: 0000 0000 | 0000 488b | 1c38 488d | 5b01 4889 | 1c38 0f8d | 2508 0000 | 488b c22b | c141 3b40 
+  0x000002aba9e6e278: 0c0f 83f3 | 0800 0048 | 63f8 410f | be7c 3810 | 81e7 ff00 | 0000 413b | 510c 0f83 | f208 0000 
+  0x000002aba9e6e298: 4863 da41 | 0fbe 5c19 | 1081 e3ff | 0000 0041 | 3b41 0c0f | 83e7 0800 | 0048 63c0 | 410f be44 
+  0x000002aba9e6e2b8: 0110 81e0 | ff00 0000 | 4c8b df44 | 03db 442b | d844 3bdf 
+
+  0x000002aba9e6e2cc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e2cc: 49bd d0af | bcc6 ab02 | 0000 49be | 6803 0000 | 0000 0000 | 0f8e 0a00 | 0000 49be | 7803 0000 
+  0x000002aba9e6e2ec: 0000 0000 | 4b8b 7435 | 0048 8d76 | 014b 8974 | 3500 0f8e | 1b00 0000 | 498b f32b 
+
+  0x000002aba9e6e308: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e308: f749 bdd0 | afbc c6ab | 0200 0041 | ff85 8803 | 0000 e906 | 0000 0048 | 8bf7 412b | f344 3bdb 
+  0x000002aba9e6e328: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e328: 49bd d0af | bcc6 ab02 | 0000 49be | a003 0000 | 0000 0000 | 0f8e 0a00 | 0000 49be | b003 0000 
+  0x000002aba9e6e348: 0000 0000 | 4b8b 4c35 | 0048 8d49 | 014b 894c | 3500 0f8e | 1b00 0000 | 498b cb2b 
+
+  0x000002aba9e6e364: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e364: cb49 bdd0 | afbc c6ab | 0200 0041 | ff85 c003 | 0000 e906 | 0000 0048 | 8bcb 412b | cb44 3bd8 
+  0x000002aba9e6e384: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e384: 49bd d0af | bcc6 ab02 | 0000 49be | d803 0000 | 0000 0000 | 0f8e 0a00 | 0000 49be | e803 0000 
+  0x000002aba9e6e3a4: 0000 0000 | 4f8b 4c35 | 004d 8d49 | 014f 894c | 3500 0f8e | 1900 0000 
+
+  0x000002aba9e6e3bc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e3bc: 442b d849 | b9d0 afbc | c6ab 0200 | 0041 ff81 | f803 0000 | e909 0000 | 004c 8bc8 | 452b cb4d 
+  0x000002aba9e6e3dc: 8bd9 413b | 500c 0f83 | be07 0000 | 4c63 ca47 | 0fbe 4c08 
+
+  0x000002aba9e6e3f0: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e3f0: 103b f149 | bdd0 afbc | c6ab 0200 | 0049 be10 | 0400 0000 | 0000 000f | 8f0a 0000 | 0049 be20 
+  0x000002aba9e6e410: 0400 0000 | 0000 0089 | 5424 504b | 8b54 3500 | 488d 5201 | 4b89 5435 | 000f 8f39 | 0000 0041 
+  0x000002aba9e6e430: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e430: 3bf3 48ba | d0af bcc6 | ab02 0000 | 48be 4004 | 0000 0000 | 0000 0f8e | 0a00 0000 | 48be 3004 
+  0x000002aba9e6e450: 0000 0000 | 0000 4c8b | 2c32 4d8d | 6d01 4c89 | 2c32 0f8e | 5600 0000 
+
+  0x000002aba9e6e468: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e468: 413b cb48 | bad0 afbc | c6ab 0200 | 0048 be68 | 0400 0000 | 0000 000f | 8f0a 0000 | 0048 be78 
+  0x000002aba9e6e488: 0400 0000 | 0000 0048 | 8b3c 3248 | 8d7f 0148 | 893c 320f | 8f15 0000 
+
+  0x000002aba9e6e4a0: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e4a0: 0048 bad0 | afbc c6ab | 0200 00ff | 8288 0400 | 00e9 1b00 | 0000 488b | d8e9 1300 
+
+  0x000002aba9e6e4bc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e4bc: 0000 48ba | d0af bcc6 | ab02 0000 | ff82 5004 | 0000 488b | df8b 5424 | 5041 03d9 | 413b 500c 
+  0x000002aba9e6e4dc: 0f83 d206 | 0000 4863 | c241 885c | 0010 ffc2 
+
+  0x000002aba9e6e4ec: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e4ec: 48b8 d0af | bcc6 ab02 | 0000 448b | 88d0 0000 | 0041 83c1 | 0244 8988 | d000 0000 | 4181 e1fe 
+  0x000002aba9e6e50c: 3f00 0041 | 83f9 000f | 84a9 0600 | 004d 8b97 
+
+  0x000002aba9e6e51c: ; ImmutableOopMap {r8=Oop [72]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@412 (line 511)
+  0x000002aba9e6e51c: 5803 0000 
+
+  0x000002aba9e6e520: ;   {poll}
+  0x000002aba9e6e520: 4185 0248 | b8d0 afbc | c6ab 0200 | 00ff 80a0 | 0400 008b | 4c24 448b | 7424 404c | 8b4c 2448 
+  0x000002aba9e6e540: e9f3 fcff | ff8b 4c24 | 44e9 7d00 | 0000 6690 
+
+  0x000002aba9e6e550: ; implicit exception: dispatches to 0x000002aba9e6ebe3
+  0x000002aba9e6e550: 413b 480c | 0f83 9306 | 0000 4863 | d141 0fbe | 5410 1048 | 8bc1 2b44 | 2444 413b | 400c 0f83 
+  0x000002aba9e6e570: 8706 0000 | 4863 c041 | 0fbe 4400 | 1003 d048 | 63c1 4188 | 5400 10ff 
+
+  0x000002aba9e6e588: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e588: c148 bad0 | afbc c6ab | 0200 008b | 82d0 0000 | 0083 c002 | 8982 d000 | 0000 81e0 | fe3f 0000 
+  0x000002aba9e6e5a8: 83f8 000f | 8458 0600 | 004d 8b97 
+
+  0x000002aba9e6e5b4: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@444 (line 523)
+  0x000002aba9e6e5b4: 5803 0000 
+
+  0x000002aba9e6e5b8: ;   {poll}
+  0x000002aba9e6e5b8: 4185 0248 | bad0 afbc | c6ab 0200 | 00ff 82d8 | 0400 003b 
+
+  0x000002aba9e6e5cc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e5cc: 4c24 4048 | bad0 afbc | c6ab 0200 | 0048 b8b8 | 0400 0000 | 0000 000f | 8d0a 0000 | 0048 b8c8 
+  0x000002aba9e6e5ec: 0400 0000 | 0000 004c | 8b0c 024d | 8d49 014c | 890c 020f | 8d90 0400 | 00e9 46ff | ffff 4983 
+  0x000002aba9e6e60c: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e60c: f900 48ba | d0af bcc6 | ab02 0000 | 48b8 2802 | 0000 0000 | 0000 0f84 | 0a00 0000 | 48b8 3802 
+  0x000002aba9e6e62c: 0000 0000 | 0000 488b | 3402 488d | 7601 4889 | 3402 0f84 | a901 0000 | ba00 0000 | 00e9 7e00 
+  0x000002aba9e6e64c: 0000 6690 
+
+  0x000002aba9e6e650: ; implicit exception: dispatches to 0x000002aba9e6ec2a
+  0x000002aba9e6e650: 413b 500c | 0f83 da05 | 0000 4863 | c241 0fbe | 4400 1041 | 3b51 0c0f | 83df 0500 | 0048 63f2 
+  0x000002aba9e6e670: 410f be74 | 3110 81e6 | ff00 0000 | d1fe 03c6 | 4863 f241 | 8844 3010 
+
+  0x000002aba9e6e688: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e688: ffc2 48b8 | d0af bcc6 | ab02 0000 | 8bb0 d000 | 0000 83c6 | 0289 b0d0 | 0000 0081 | e6fe 3f00 
+  0x000002aba9e6e6a8: 0083 fe00 | 0f84 a805 | 0000 4d8b | 9758 0300 
+
+  0x000002aba9e6e6b8: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@136 (line 499)
+                      ;   {poll}
+  0x000002aba9e6e6b8: 0041 8502 
+
+  0x000002aba9e6e6bc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e6bc: 48b8 d0af | bcc6 ab02 | 0000 ff80 | 6802 0000 | 3b54 2444 
+
+  0x000002aba9e6e6d0: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e6d0: 48b8 d0af | bcc6 ab02 | 0000 48be | 4802 0000 | 0000 0000 | 0f8d 0a00 | 0000 48be | 5802 0000 
+  0x000002aba9e6e6f0: 0000 0000 | 488b 3c30 | 488d 7f01 | 4889 3c30 | 0f8d a800 | 0000 e945 | ffff ff0f | 1f44 0000 
+  0x000002aba9e6e710: ; implicit exception: dispatches to 0x000002aba9e6ec7b
+  0x000002aba9e6e710: 413b 500c | 0f83 6b05 | 0000 4863 | c241 0fbe | 4400 1041 | 3b51 0c0f | 8370 0500 | 0048 63f2 
+  0x000002aba9e6e730: 410f be74 | 3110 488b | fa2b 7c24 | 4441 3b78 | 0c0f 8364 | 0500 0048 | 63ff 410f | be7c 3810 
+  0x000002aba9e6e750: 81e6 ff00 | 0000 81e7 | ff00 0000 | 03f7 d1fe | 03c6 4863 | f241 8844 | 3010 ffc2 
+
+  0x000002aba9e6e76c: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e76c: 48b8 d0af | bcc6 ab02 | 0000 8bb0 | d000 0000 | 83c6 0289 | b0d0 0000 | 0081 e6fe | 3f00 0083 
+  0x000002aba9e6e78c: fe00 0f84 | 2505 0000 | 4d8b 9758 
+
+  0x000002aba9e6e798: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@179 (line 501)
+                      ;   {poll}
+  0x000002aba9e6e798: 0300 0041 
+
+  0x000002aba9e6e79c: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e79c: 8502 48b8 | d0af bcc6 | ab02 0000 | ff80 a002 | 0000 3b54 
+
+  0x000002aba9e6e7b0: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e7b0: 2440 48b8 | d0af bcc6 | ab02 0000 | 48be 8002 | 0000 0000 | 0000 0f8d | 0a00 0000 | 48be 9002 
+  0x000002aba9e6e7d0: 0000 0000 | 0000 488b | 3c30 488d | 7f01 4889 | 3c30 0f8d | ad02 0000 | e923 ffff | ff8b 4c24 
+  0x000002aba9e6e7f0: 44e9 8500 | 0000 6690 
+
+  0x000002aba9e6e7f8: ; implicit exception: dispatches to 0x000002aba9e6ecda
+  0x000002aba9e6e7f8: 413b 480c | 0f83 e204 | 0000 4863 | d141 0fbe | 5410 1048 | 8bc1 2b44 | 2444 413b | 400c 0f83 
+  0x000002aba9e6e818: d604 0000 | 4863 c041 | 0fbe 4400 | 1081 e0ff | 0000 00d1 | f803 d048 | 63c1 4188 | 5400 10ff 
+  0x000002aba9e6e838: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e838: c148 bad0 | afbc c6ab | 0200 008b | 82d0 0000 | 0083 c002 | 8982 d000 | 0000 81e0 | fe3f 0000 
+  0x000002aba9e6e858: 83f8 000f | 849f 0400 | 004d 8b97 
+
+  0x000002aba9e6e864: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@217 (line 504)
+  0x000002aba9e6e864: 5803 0000 
+
+  0x000002aba9e6e868: ;   {poll}
+  0x000002aba9e6e868: 4185 0248 | bad0 afbc | c6ab 0200 | 00ff 82d8 | 0200 003b 
+
+  0x000002aba9e6e87c: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e87c: 4c24 4048 | bad0 afbc | c6ab 0200 | 0048 b8b8 | 0200 0000 | 0000 000f | 8d0a 0000 | 0048 b8c8 
+  0x000002aba9e6e89c: 0200 0000 | 0000 004c | 8b0c 024d | 8d49 014c | 890c 020f | 8de0 0100 | 00e9 3eff | ffff 4983 
+  0x000002aba9e6e8bc: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e8bc: f900 48ba | d0af bcc6 | ab02 0000 | 48b8 d001 | 0000 0000 | 0000 0f84 | 0a00 0000 | 48b8 e001 
+  0x000002aba9e6e8dc: 0000 0000 | 0000 488b | 3402 488d | 7601 4889 | 3402 0f84 | a101 0000 | ba00 0000 | 00e9 7600 
+  0x000002aba9e6e8fc: 0000 6690 
+
+  0x000002aba9e6e900: ; implicit exception: dispatches to 0x000002aba9e6ed21
+  0x000002aba9e6e900: 413b 500c | 0f83 2104 | 0000 4863 | c241 0fbe | 4400 1041 | 3b51 0c0f | 8326 0400 | 0048 63f2 
+  0x000002aba9e6e920: 410f be74 | 3110 03c6 | 4863 f241 | 8844 3010 
+
+  0x000002aba9e6e930: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e930: ffc2 48b8 | d0af bcc6 | ab02 0000 | 8bb0 d000 | 0000 83c6 | 0289 b0d0 | 0000 0081 | e6fe 3f00 
+  0x000002aba9e6e950: 0083 fe00 | 0f84 f703 | 0000 4d8b | 9758 0300 
+
+  0x000002aba9e6e960: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@101 (line 494)
+                      ;   {poll}
+  0x000002aba9e6e960: 0041 8502 
+
+  0x000002aba9e6e964: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e964: 48b8 d0af | bcc6 ab02 | 0000 ff80 | 1002 0000 | 3b54 2440 
+
+  0x000002aba9e6e978: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6e978: 48b8 d0af | bcc6 ab02 | 0000 48be | f001 0000 | 0000 0000 | 0f8d 0a00 | 0000 48be | 0002 0000 
+  0x000002aba9e6e998: 0000 0000 | 488b 3c30 | 488d 7f01 | 4889 3c30 | 0f8d e700 | 0000 e94d | ffff ff8b | 4c24 448b 
+  0x000002aba9e6e9b8: 5424 448b | 7424 40e9 | 8400 0000 | 0f1f 4000 
+
+  0x000002aba9e6e9c8: ; implicit exception: dispatches to 0x000002aba9e6ed72
+  0x000002aba9e6e9c8: 413b 480c | 0f83 aa03 | 0000 4863 | c141 0fbe | 4400 104c | 8bc9 442b | ca45 3b48 | 0c0f 839f 
+  0x000002aba9e6e9e8: 0300 004d | 63c9 470f | be4c 0810 | 4103 c14c | 63c9 4388 | 4408 10ff 
+
+  0x000002aba9e6ea00: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ea00: c148 b8d0 | afbc c6ab | 0200 0044 | 8b88 d000 | 0000 4183 | c102 4489 | 88d0 0000 | 0041 81e1 
+  0x000002aba9e6ea20: fe3f 0000 | 4183 f900 | 0f84 6a03 | 0000 4d8b | 9758 0300 
+
+  0x000002aba9e6ea34: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@72 (line 489)
+                      ;   {poll}
+  0x000002aba9e6ea34: 0041 8502 
+
+  0x000002aba9e6ea38: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ea38: 48b8 d0af | bcc6 ab02 | 0000 ff80 | b801 0000 
+
+  0x000002aba9e6ea48: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ea48: 3bce 48b8 | d0af bcc6 | ab02 0000 | 49b9 9801 | 0000 0000 | 0000 0f8d | 0a00 0000 | 49b9 a801 
+  0x000002aba9e6ea68: 0000 0000 | 0000 4a8b | 3c08 488d | 7f01 4a89 | 3c08 0f8d | 1500 0000 | e943 ffff 
+
+  0x000002aba9e6ea84: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ea84: ff48 bad0 | afbc c6ab | 0200 00ff | 8280 0100 | 0048 83c4 
+
+  0x000002aba9e6ea98: ;   {poll_return}
+  0x000002aba9e6ea98: 705d 493b | a750 0300 | 000f 8712 | 0300 00c3 
+
+  0x000002aba9e6eaa8: ;   {no_reloc}
+  0x000002aba9e6eaa8: e931 0300 | 0000 0000 | 0000 e931 | 0300 004c 
+
+  0x000002aba9e6eab8: ;   {metadata(method data for {method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6eab8: 8bc0 49b9 | d0af bcc6 | ab02 0000 | 4983 81f0 | 0400 0001 
+
+  0x000002aba9e6eacc: ;   {oop("Illegal filter"{0x0000000712ae21f8})}
+  0x000002aba9e6eacc: 4c8b c349 | b9f8 21ae | 1207 0000 | 0048 8bd0 | 4889 4424 | 5866 0f1f 
+
+  0x000002aba9e6eae4: ;   {optimized virtual_call}
+  0x000002aba9e6eae4: 4400 00e8 
+
+  0x000002aba9e6eae8: ; ImmutableOopMap {[88]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@455 (line 527)
+  0x000002aba9e6eae8: 9428 4607 | 488b 4424 | 58e9 1e03 
+
+  0x000002aba9e6eaf4: ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6eaf4: 0000 49ba | f014 bcc6 | ab02 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x000002aba9e6eb0c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6eb0c: ffe8 6e9d 
+
+  0x000002aba9e6eb10: ; ImmutableOopMap {rbx=Oop r8=Oop r9=Oop [72]=Oop }
+                      ;*synchronization entry
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@-1 (line 484)
+  0x000002aba9e6eb10: 5007 e96d 
+
+  0x000002aba9e6eb14: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb14: f5ff ffe8 
+
+  0x000002aba9e6eb18: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@235 (line 510)
+  0x000002aba9e6eb18: 844c 5007 
+
+  0x000002aba9e6eb1c: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb1c: e87f 4c50 
+
+  0x000002aba9e6eb20: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@235 (line 510)
+  0x000002aba9e6eb20: 0748 8914 | 244c 8944 
+
+  0x000002aba9e6eb28: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eb28: 2408 e871 
+
+  0x000002aba9e6eb2c: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@235 (line 510)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb2c: 4350 07e8 
+
+  0x000002aba9e6eb30: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@239 (line 510)
+  0x000002aba9e6eb30: 6c4c 5007 
+
+  0x000002aba9e6eb34: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb34: e867 4c50 
+
+  0x000002aba9e6eb38: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@239 (line 510)
+  0x000002aba9e6eb38: 0748 8914 | 244c 894c 
+
+  0x000002aba9e6eb40: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eb40: 2408 e859 
+
+  0x000002aba9e6eb44: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@239 (line 510)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6eb44: 4350 0749 | baf0 14bc | c6ab 0200 | 004c 8954 | 2408 48c7 | 0424 f600 
+
+  0x000002aba9e6eb5c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6eb5c: 0000 e81d 
+
+  0x000002aba9e6eb60: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@246 (line 509)
+  0x000002aba9e6eb60: 9d50 07e9 | 7af6 ffff 
+
+  0x000002aba9e6eb68: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb68: e833 4c50 
+
+  0x000002aba9e6eb6c: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@262 (line 513)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb6c: 07e8 2e4c 
+
+  0x000002aba9e6eb70: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@262 (line 513)
+  0x000002aba9e6eb70: 5007 4889 | 0424 4c89 
+
+  0x000002aba9e6eb78: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eb78: 4424 08e8 
+
+  0x000002aba9e6eb7c: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@262 (line 513)
+  0x000002aba9e6eb7c: 2043 5007 
+
+  0x000002aba9e6eb80: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb80: e81b 4c50 
+
+  0x000002aba9e6eb84: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@272 (line 514)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6eb84: 07e8 164c 
+
+  0x000002aba9e6eb88: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@272 (line 514)
+  0x000002aba9e6eb88: 5007 4889 | 1424 4c89 
+
+  0x000002aba9e6eb90: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eb90: 4c24 08e8 
+
+  0x000002aba9e6eb94: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@272 (line 514)
+  0x000002aba9e6eb94: 0843 5007 | 4889 0424 | 4c89 4c24 
+
+  0x000002aba9e6eba0: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eba0: 08e8 fa42 
+
+  0x000002aba9e6eba4: ; ImmutableOopMap {r8=Oop r9=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@285 (line 515)
+  0x000002aba9e6eba4: 5007 4889 | 1424 4c89 
+
+  0x000002aba9e6ebac: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ebac: 4424 08e8 
+
+  0x000002aba9e6ebb0: ; ImmutableOopMap {r8=Oop [72]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@372 (line 520)
+  0x000002aba9e6ebb0: ec42 5007 | 4889 1424 | 4c89 4424 
+
+  0x000002aba9e6ebbc: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ebbc: 08e8 de42 
+
+  0x000002aba9e6ebc0: ; ImmutableOopMap {r8=Oop [72]=Oop }
+                      ;*bastore {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@408 (line 520)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ebc0: 5007 49ba | f014 bcc6 | ab02 0000 | 4c89 5424 | 0848 c704 | 249c 0100 
+
+  0x000002aba9e6ebd8: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ebd8: 00e8 a29c 
+
+  0x000002aba9e6ebdc: ; ImmutableOopMap {r8=Oop [72]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@412 (line 511)
+  0x000002aba9e6ebdc: 5007 e936 
+
+  0x000002aba9e6ebe0: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ebe0: f9ff ffe8 
+
+  0x000002aba9e6ebe4: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@430 (line 524)
+  0x000002aba9e6ebe4: b84b 5007 
+
+  0x000002aba9e6ebe8: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ebe8: e8b3 4b50 
+
+  0x000002aba9e6ebec: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@430 (line 524)
+  0x000002aba9e6ebec: 0748 890c | 244c 8944 
+
+  0x000002aba9e6ebf4: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ebf4: 2408 e8a5 
+
+  0x000002aba9e6ebf8: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@430 (line 524)
+  0x000002aba9e6ebf8: 4250 0748 | 8904 244c | 8944 2408 
+
+  0x000002aba9e6ec04: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ec04: e897 4250 
+
+  0x000002aba9e6ec08: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@437 (line 524)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ec08: 0749 baf0 | 14bc c6ab | 0200 004c | 8954 2408 | 48c7 0424 | bc01 0000 
+
+  0x000002aba9e6ec20: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ec20: e85b 9c50 
+
+  0x000002aba9e6ec24: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@444 (line 523)
+  0x000002aba9e6ec24: 07e9 87f9 
+
+  0x000002aba9e6ec28: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec28: ffff e871 
+
+  0x000002aba9e6ec2c: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@119 (line 500)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec2c: 4b50 07e8 
+
+  0x000002aba9e6ec30: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@119 (line 500)
+  0x000002aba9e6ec30: 6c4b 5007 | 4889 1424 | 4c89 4424 
+
+  0x000002aba9e6ec3c: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ec3c: 08e8 5e42 
+
+  0x000002aba9e6ec40: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@119 (line 500)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec40: 5007 e859 
+
+  0x000002aba9e6ec44: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@126 (line 500)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec44: 4b50 07e8 
+
+  0x000002aba9e6ec48: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@126 (line 500)
+  0x000002aba9e6ec48: 544b 5007 | 4889 1424 | 4c89 4c24 
+
+  0x000002aba9e6ec54: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ec54: 08e8 4642 
+
+  0x000002aba9e6ec58: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@126 (line 500)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ec58: 5007 49ba | f014 bcc6 | ab02 0000 | 4c89 5424 | 0848 c704 | 2488 0000 
+
+  0x000002aba9e6ec70: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ec70: 00e8 0a9c 
+
+  0x000002aba9e6ec74: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@136 (line 499)
+  0x000002aba9e6ec74: 5007 e937 
+
+  0x000002aba9e6ec78: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec78: faff ffe8 
+
+  0x000002aba9e6ec7c: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@150 (line 502)
+  0x000002aba9e6ec7c: 204b 5007 
+
+  0x000002aba9e6ec80: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec80: e81b 4b50 
+
+  0x000002aba9e6ec84: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@150 (line 502)
+  0x000002aba9e6ec84: 0748 8914 | 244c 8944 
+
+  0x000002aba9e6ec8c: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ec8c: 2408 e80d 
+
+  0x000002aba9e6ec90: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@150 (line 502)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec90: 4250 07e8 
+
+  0x000002aba9e6ec94: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@154 (line 502)
+  0x000002aba9e6ec94: 084b 5007 
+
+  0x000002aba9e6ec98: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ec98: e803 4b50 
+
+  0x000002aba9e6ec9c: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@154 (line 502)
+  0x000002aba9e6ec9c: 0748 8914 | 244c 894c 
+
+  0x000002aba9e6eca4: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6eca4: 2408 e8f5 
+
+  0x000002aba9e6eca8: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@154 (line 502)
+  0x000002aba9e6eca8: 4150 0748 | 893c 244c | 8944 2408 
+
+  0x000002aba9e6ecb4: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ecb4: e8e7 4150 
+
+  0x000002aba9e6ecb8: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@165 (line 502)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ecb8: 0749 baf0 | 14bc c6ab | 0200 004c | 8954 2408 | 48c7 0424 | b300 0000 
+
+  0x000002aba9e6ecd0: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ecd0: e8ab 9b50 
+
+  0x000002aba9e6ecd4: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@179 (line 501)
+  0x000002aba9e6ecd4: 07e9 bafa 
+
+  0x000002aba9e6ecd8: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ecd8: ffff e8c1 
+
+  0x000002aba9e6ecdc: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@197 (line 505)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ecdc: 4a50 07e8 
+
+  0x000002aba9e6ece0: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@197 (line 505)
+  0x000002aba9e6ece0: bc4a 5007 | 4889 0c24 | 4c89 4424 
+
+  0x000002aba9e6ecec: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ecec: 08e8 ae41 
+
+  0x000002aba9e6ecf0: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@197 (line 505)
+  0x000002aba9e6ecf0: 5007 4889 | 0424 4c89 
+
+  0x000002aba9e6ecf8: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ecf8: 4424 08e8 
+
+  0x000002aba9e6ecfc: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@204 (line 505)
+  0x000002aba9e6ecfc: a041 5007 
+
+  0x000002aba9e6ed00: ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ed00: 49ba f014 | bcc6 ab02 | 0000 4c89 | 5424 0848 | c704 24d9 
+
+  0x000002aba9e6ed14: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ed14: 0000 00e8 
+
+  0x000002aba9e6ed18: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@217 (line 504)
+  0x000002aba9e6ed18: 649b 5007 | e940 fbff 
+
+  0x000002aba9e6ed20: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed20: ffe8 7a4a 
+
+  0x000002aba9e6ed24: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@90 (line 495)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed24: 5007 e875 
+
+  0x000002aba9e6ed28: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@90 (line 495)
+  0x000002aba9e6ed28: 4a50 0748 | 8914 244c | 8944 2408 
+
+  0x000002aba9e6ed34: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ed34: e867 4150 
+
+  0x000002aba9e6ed38: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@90 (line 495)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed38: 07e8 624a 
+
+  0x000002aba9e6ed3c: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@94 (line 495)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed3c: 5007 e85d 
+
+  0x000002aba9e6ed40: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@94 (line 495)
+  0x000002aba9e6ed40: 4a50 0748 | 8914 244c | 894c 2408 
+
+  0x000002aba9e6ed4c: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ed4c: e84f 4150 
+
+  0x000002aba9e6ed50: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@94 (line 495)
+                      ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ed50: 0749 baf0 | 14bc c6ab | 0200 004c | 8954 2408 | 48c7 0424 | 6500 0000 
+
+  0x000002aba9e6ed68: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6ed68: e813 9b50 
+
+  0x000002aba9e6ed6c: ; ImmutableOopMap {r9=Oop [72]=Oop r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@101 (line 494)
+  0x000002aba9e6ed6c: 07e9 e8fb 
+
+  0x000002aba9e6ed70: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed70: ffff e829 
+
+  0x000002aba9e6ed74: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@58 (line 490)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000002aba9e6ed74: 4a50 07e8 
+
+  0x000002aba9e6ed78: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@58 (line 490)
+  0x000002aba9e6ed78: 244a 5007 | 4889 0c24 | 4c89 4424 
+
+  0x000002aba9e6ed84: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ed84: 08e8 1641 
+
+  0x000002aba9e6ed88: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@58 (line 490)
+  0x000002aba9e6ed88: 5007 4c89 | 0c24 4c89 
+
+  0x000002aba9e6ed90: ;   {runtime_call throw_range_check_failed Runtime1 stub}
+  0x000002aba9e6ed90: 4424 08e8 
+
+  0x000002aba9e6ed94: ; ImmutableOopMap {r8=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@65 (line 490)
+  0x000002aba9e6ed94: 0841 5007 
+
+  0x000002aba9e6ed98: ;   {metadata({method} {0x000002abc6bc14f8} 'filterRow' '([B[BIII)V' in 'sun/awt/image/PNGImageDecoder')}
+  0x000002aba9e6ed98: 49ba f014 | bcc6 ab02 | 0000 4c89 | 5424 0848 | c704 2448 
+
+  0x000002aba9e6edac: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000002aba9e6edac: 0000 00e8 
+
+  0x000002aba9e6edb0: ; ImmutableOopMap {r8=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@72 (line 489)
+  0x000002aba9e6edb0: cc9a 5007 | e975 fcff 
+
+  0x000002aba9e6edb8: ;   {internal_word}
+  0x000002aba9e6edb8: ff49 ba9a | eae6 a9ab | 0200 004d | 8997 6803 
+
+  0x000002aba9e6edc8: ;   {runtime_call SafepointBlob}
+  0x000002aba9e6edc8: 0000 e931 
+
+  0x000002aba9e6edcc: ;   {metadata(NULL)}
+  0x000002aba9e6edcc: 8c46 0748 | ba00 0000 | 0000 0000 | 00b8 000f 
+
+  0x000002aba9e6eddc: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x000002aba9e6eddc: 050a e81d 
+
+  0x000002aba9e6ede0: ; ImmutableOopMap {rbx=Oop }
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.awt.image.PNGImageDecoder::filterRow@447 (line 527)
+  0x000002aba9e6ede0: 8a50 07e9 | c0fc ffff 
+
+  0x000002aba9e6ede8: ;   {runtime_call new_instance Runtime1 stub}
+  0x000002aba9e6ede8: 488b d2e8 
+
+  0x000002aba9e6edec: ; ImmutableOopMap {rbx=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.awt.image.PNGImageDecoder::filterRow@447 (line 527)
+  0x000002aba9e6edec: 904f 5007 | e9c2 fcff | ff90 9049 | 8b87 e003 | 0000 49c7 | 87e0 0300 | 0000 0000 | 0049 c787 
+  0x000002aba9e6ee0c: e803 0000 | 0000 0000 | 4883 c470 
+
+  0x000002aba9e6ee18: ;   {runtime_call unwind_exception Runtime1 stub}
+  0x000002aba9e6ee18: 5de9 e269 | 4707 f4f4 
+[Stub Code]
+  0x000002aba9e6ee20: ;   {no_reloc}
+  0x000002aba9e6ee20: 0f1f 4400 
+
+  0x000002aba9e6ee24: ;   {static_stub}
+  0x000002aba9e6ee24: 0048 bb00 | 0000 0000 
+
+  0x000002aba9e6ee2c: ;   {runtime_call}
+  0x000002aba9e6ee2c: 0000 00e9 | fbff ffff 
+[Exception Handler]
+  0x000002aba9e6ee34: ;   {runtime_call handle_exception_from_callee Runtime1 stub}
+  0x000002aba9e6ee34: e847 6750 
+
+  0x000002aba9e6ee38: ;   {external_word}
+  0x000002aba9e6ee38: 0748 b940 | 9a57 f0fc | 7f00 0048 
+
+  0x000002aba9e6ee44: ;   {runtime_call}
+  0x000002aba9e6ee44: 83e4 f049 | ba60 2d20 | f0fc 7f00 | 0041 ffd2 
+
+  0x000002aba9e6ee54: ;   {section_word}
+  0x000002aba9e6ee54: f449 ba55 | eee6 a9ab | 0200 0041 
+
+  0x000002aba9e6ee60: ;   {runtime_call DeoptimizationBlob}
+  0x000002aba9e6ee60: 52e9 3a7e | 4607 f4f4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000002abca3c9390, length=19, elements={
+0x000002abc5993290, 0x000002abc59958c0, 0x000002abc59cb290, 0x000002abc59ccd70,
+0x000002abc59d0680, 0x000002abc59d4540, 0x000002abc59d6170, 0x000002abc59d73c0,
+0x000002abc59ead30, 0x000002abc5b6f810, 0x000002abc5b6c060, 0x000002abc5b6c570,
+0x000002abc5b6e3d0, 0x000002abc5b6ca80, 0x000002abc5b6cf90, 0x000002abc5b6d4a0,
+0x000002abc5b6d9b0, 0x000002abc5b6e8e0, 0x000002abc5b6dec0
+}
+
+Java Threads: ( => current thread )
+  0x000002abc5993290 JavaThread "Reference Handler" daemon [_thread_blocked, id=2752, stack(0x000000e5d9800000,0x000000e5d9900000)]
+  0x000002abc59958c0 JavaThread "Finalizer" daemon [_thread_blocked, id=43380, stack(0x000000e5d9900000,0x000000e5d9a00000)]
+  0x000002abc59cb290 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12476, stack(0x000000e5d9a00000,0x000000e5d9b00000)]
+  0x000002abc59ccd70 JavaThread "Attach Listener" daemon [_thread_blocked, id=44400, stack(0x000000e5d9b00000,0x000000e5d9c00000)]
+  0x000002abc59d0680 JavaThread "Service Thread" daemon [_thread_blocked, id=21684, stack(0x000000e5d9c00000,0x000000e5d9d00000)]
+  0x000002abc59d4540 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=10928, stack(0x000000e5d9d00000,0x000000e5d9e00000)]
+  0x000002abc59d6170 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=45620, stack(0x000000e5d9e00000,0x000000e5d9f00000)]
+  0x000002abc59d73c0 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=45164, stack(0x000000e5d9f00000,0x000000e5da000000)]
+  0x000002abc59ead30 JavaThread "Sweeper thread" daemon [_thread_blocked, id=36396, stack(0x000000e5da000000,0x000000e5da100000)]
+  0x000002abc5b6f810 JavaThread "Notification Thread" daemon [_thread_blocked, id=46732, stack(0x000000e5da100000,0x000000e5da200000)]
+  0x000002abc5b6c060 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=25448, stack(0x000000e5da300000,0x000000e5da400000)]
+  0x000002abc5b6c570 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=31044, stack(0x000000e5da400000,0x000000e5da500000)]
+  0x000002abc5b6e3d0 JavaThread "AWT-Shutdown" [_thread_blocked, id=22576, stack(0x000000e5da500000,0x000000e5da600000)]
+  0x000002abc5b6ca80 JavaThread "AWT-Windows" daemon [_thread_in_native, id=37700, stack(0x000000e5da600000,0x000000e5da700000)]
+  0x000002abc5b6cf90 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=16932, stack(0x000000e5daf00000,0x000000e5db000000)]
+  0x000002abc5b6d4a0 JavaThread "D3D Screen Updater" daemon [_thread_blocked, id=42936, stack(0x000000e5db000000,0x000000e5db100000)]
+  0x000002abc5b6d9b0 JavaThread "TimerQueue" daemon [_thread_blocked, id=38140, stack(0x000000e5db100000,0x000000e5db200000)]
+  0x000002abc5b6e8e0 JavaThread "DestroyJavaVM" [_thread_blocked, id=36888, stack(0x000000e5d9100000,0x000000e5d9200000)]
+=>0x000002abc5b6dec0 JavaThread "Image Fetcher 0" daemon [_thread_in_Java, id=43040, stack(0x000000e5db200000,0x000000e5db300000)]
+
+Other Threads:
+  0x000002abc593e560 VMThread "VM Thread" [stack: 0x000000e5d9700000,0x000000e5d9800000] [id=45820]
+  0x000002abc590a260 WatcherThread [stack: 0x000000e5da200000,0x000000e5da300000] [id=34588]
+  0x000002aba4f186d0 GCTaskThread "GC Thread#0" [stack: 0x000000e5d9200000,0x000000e5d9300000] [id=38124]
+  0x000002aba4f29330 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000e5d9300000,0x000000e5d9400000] [id=18688]
+  0x000002aba4f2a4f0 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000e5d9400000,0x000000e5d9500000] [id=1920]
+  0x000002abc57d44f0 ConcurrentGCThread "G1 Refine#0" [stack: 0x000000e5d9500000,0x000000e5d9600000] [id=31512]
+  0x000002abc57d4f20 ConcurrentGCThread "G1 Service" [stack: 0x000000e5d9600000,0x000000e5d9700000] [id=20808]
+
+Threads with active compile tasks:
+C2 CompilerThread0      766  744 %     4       sun.awt.image.PNGImageDecoder::filterRow @ 47 (460 bytes)
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000702e00000, size: 4050 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) not mapped
+Compressed class space mapped at: 0x0000000800000000-0x0000000840000000, reserved size: 1073741824
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 0, Narrow klass range: 0x40000000
+
+GC Precious Log:
+ CPUs: 8 total, 8 available
+ Memory: 16192M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (Zero based)
+ Heap Region Size: 2M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 254M
+ Heap Max Capacity: 4050M
+ Pre-touch: Disabled
+ Parallel Workers: 8
+ Concurrent Workers: 2
+ Concurrent Refinement Workers: 8
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 260096K, used 12288K [0x0000000702e00000, 0x0000000800000000)
+  region size 2048K, 5 young (10240K), 0 survivors (0K)
+ Metaspace       used 13398K, committed 13632K, reserved 1114112K
+  class space    used 1314K, committed 1408K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
+|   0|0x0000000702e00000, 0x0000000703000000, 0x0000000703000000|100%|HS|  |TAMS 0x0000000702e00000, 0x0000000702e00000| Complete 
+|   1|0x0000000703000000, 0x0000000703200000, 0x0000000703200000|100%|HC|  |TAMS 0x0000000703000000, 0x0000000703000000| Complete 
+|   2|0x0000000703200000, 0x0000000703200000, 0x0000000703400000|  0%| F|  |TAMS 0x0000000703200000, 0x0000000703200000| Untracked 
+|   3|0x0000000703400000, 0x0000000703400000, 0x0000000703600000|  0%| F|  |TAMS 0x0000000703400000, 0x0000000703400000| Untracked 
+|   4|0x0000000703600000, 0x0000000703600000, 0x0000000703800000|  0%| F|  |TAMS 0x0000000703600000, 0x0000000703600000| Untracked 
+|   5|0x0000000703800000, 0x0000000703800000, 0x0000000703a00000|  0%| F|  |TAMS 0x0000000703800000, 0x0000000703800000| Untracked 
+|   6|0x0000000703a00000, 0x0000000703a00000, 0x0000000703c00000|  0%| F|  |TAMS 0x0000000703a00000, 0x0000000703a00000| Untracked 
+|   7|0x0000000703c00000, 0x0000000703c00000, 0x0000000703e00000|  0%| F|  |TAMS 0x0000000703c00000, 0x0000000703c00000| Untracked 
+|   8|0x0000000703e00000, 0x0000000703e00000, 0x0000000704000000|  0%| F|  |TAMS 0x0000000703e00000, 0x0000000703e00000| Untracked 
+|   9|0x0000000704000000, 0x0000000704000000, 0x0000000704200000|  0%| F|  |TAMS 0x0000000704000000, 0x0000000704000000| Untracked 
+|  10|0x0000000704200000, 0x0000000704200000, 0x0000000704400000|  0%| F|  |TAMS 0x0000000704200000, 0x0000000704200000| Untracked 
+|  11|0x0000000704400000, 0x0000000704400000, 0x0000000704600000|  0%| F|  |TAMS 0x0000000704400000, 0x0000000704400000| Untracked 
+|  12|0x0000000704600000, 0x0000000704600000, 0x0000000704800000|  0%| F|  |TAMS 0x0000000704600000, 0x0000000704600000| Untracked 
+|  13|0x0000000704800000, 0x0000000704800000, 0x0000000704a00000|  0%| F|  |TAMS 0x0000000704800000, 0x0000000704800000| Untracked 
+|  14|0x0000000704a00000, 0x0000000704a00000, 0x0000000704c00000|  0%| F|  |TAMS 0x0000000704a00000, 0x0000000704a00000| Untracked 
+|  15|0x0000000704c00000, 0x0000000704c00000, 0x0000000704e00000|  0%| F|  |TAMS 0x0000000704c00000, 0x0000000704c00000| Untracked 
+|  16|0x0000000704e00000, 0x0000000704e00000, 0x0000000705000000|  0%| F|  |TAMS 0x0000000704e00000, 0x0000000704e00000| Untracked 
+|  17|0x0000000705000000, 0x0000000705000000, 0x0000000705200000|  0%| F|  |TAMS 0x0000000705000000, 0x0000000705000000| Untracked 
+|  18|0x0000000705200000, 0x0000000705200000, 0x0000000705400000|  0%| F|  |TAMS 0x0000000705200000, 0x0000000705200000| Untracked 
+|  19|0x0000000705400000, 0x0000000705400000, 0x0000000705600000|  0%| F|  |TAMS 0x0000000705400000, 0x0000000705400000| Untracked 
+|  20|0x0000000705600000, 0x0000000705600000, 0x0000000705800000|  0%| F|  |TAMS 0x0000000705600000, 0x0000000705600000| Untracked 
+|  21|0x0000000705800000, 0x0000000705800000, 0x0000000705a00000|  0%| F|  |TAMS 0x0000000705800000, 0x0000000705800000| Untracked 
+|  22|0x0000000705a00000, 0x0000000705a00000, 0x0000000705c00000|  0%| F|  |TAMS 0x0000000705a00000, 0x0000000705a00000| Untracked 
+|  23|0x0000000705c00000, 0x0000000705c00000, 0x0000000705e00000|  0%| F|  |TAMS 0x0000000705c00000, 0x0000000705c00000| Untracked 
+|  24|0x0000000705e00000, 0x0000000705e00000, 0x0000000706000000|  0%| F|  |TAMS 0x0000000705e00000, 0x0000000705e00000| Untracked 
+|  25|0x0000000706000000, 0x0000000706000000, 0x0000000706200000|  0%| F|  |TAMS 0x0000000706000000, 0x0000000706000000| Untracked 
+|  26|0x0000000706200000, 0x0000000706200000, 0x0000000706400000|  0%| F|  |TAMS 0x0000000706200000, 0x0000000706200000| Untracked 
+|  27|0x0000000706400000, 0x0000000706400000, 0x0000000706600000|  0%| F|  |TAMS 0x0000000706400000, 0x0000000706400000| Untracked 
+|  28|0x0000000706600000, 0x0000000706600000, 0x0000000706800000|  0%| F|  |TAMS 0x0000000706600000, 0x0000000706600000| Untracked 
+|  29|0x0000000706800000, 0x0000000706800000, 0x0000000706a00000|  0%| F|  |TAMS 0x0000000706800000, 0x0000000706800000| Untracked 
+|  30|0x0000000706a00000, 0x0000000706a00000, 0x0000000706c00000|  0%| F|  |TAMS 0x0000000706a00000, 0x0000000706a00000| Untracked 
+|  31|0x0000000706c00000, 0x0000000706c00000, 0x0000000706e00000|  0%| F|  |TAMS 0x0000000706c00000, 0x0000000706c00000| Untracked 
+|  32|0x0000000706e00000, 0x0000000706e00000, 0x0000000707000000|  0%| F|  |TAMS 0x0000000706e00000, 0x0000000706e00000| Untracked 
+|  33|0x0000000707000000, 0x0000000707000000, 0x0000000707200000|  0%| F|  |TAMS 0x0000000707000000, 0x0000000707000000| Untracked 
+|  34|0x0000000707200000, 0x0000000707200000, 0x0000000707400000|  0%| F|  |TAMS 0x0000000707200000, 0x0000000707200000| Untracked 
+|  35|0x0000000707400000, 0x0000000707400000, 0x0000000707600000|  0%| F|  |TAMS 0x0000000707400000, 0x0000000707400000| Untracked 
+|  36|0x0000000707600000, 0x0000000707600000, 0x0000000707800000|  0%| F|  |TAMS 0x0000000707600000, 0x0000000707600000| Untracked 
+|  37|0x0000000707800000, 0x0000000707800000, 0x0000000707a00000|  0%| F|  |TAMS 0x0000000707800000, 0x0000000707800000| Untracked 
+|  38|0x0000000707a00000, 0x0000000707a00000, 0x0000000707c00000|  0%| F|  |TAMS 0x0000000707a00000, 0x0000000707a00000| Untracked 
+|  39|0x0000000707c00000, 0x0000000707c00000, 0x0000000707e00000|  0%| F|  |TAMS 0x0000000707c00000, 0x0000000707c00000| Untracked 
+|  40|0x0000000707e00000, 0x0000000707e00000, 0x0000000708000000|  0%| F|  |TAMS 0x0000000707e00000, 0x0000000707e00000| Untracked 
+|  41|0x0000000708000000, 0x0000000708000000, 0x0000000708200000|  0%| F|  |TAMS 0x0000000708000000, 0x0000000708000000| Untracked 
+|  42|0x0000000708200000, 0x0000000708200000, 0x0000000708400000|  0%| F|  |TAMS 0x0000000708200000, 0x0000000708200000| Untracked 
+|  43|0x0000000708400000, 0x0000000708400000, 0x0000000708600000|  0%| F|  |TAMS 0x0000000708400000, 0x0000000708400000| Untracked 
+|  44|0x0000000708600000, 0x0000000708600000, 0x0000000708800000|  0%| F|  |TAMS 0x0000000708600000, 0x0000000708600000| Untracked 
+|  45|0x0000000708800000, 0x0000000708800000, 0x0000000708a00000|  0%| F|  |TAMS 0x0000000708800000, 0x0000000708800000| Untracked 
+|  46|0x0000000708a00000, 0x0000000708a00000, 0x0000000708c00000|  0%| F|  |TAMS 0x0000000708a00000, 0x0000000708a00000| Untracked 
+|  47|0x0000000708c00000, 0x0000000708c00000, 0x0000000708e00000|  0%| F|  |TAMS 0x0000000708c00000, 0x0000000708c00000| Untracked 
+|  48|0x0000000708e00000, 0x0000000708e00000, 0x0000000709000000|  0%| F|  |TAMS 0x0000000708e00000, 0x0000000708e00000| Untracked 
+|  49|0x0000000709000000, 0x0000000709000000, 0x0000000709200000|  0%| F|  |TAMS 0x0000000709000000, 0x0000000709000000| Untracked 
+|  50|0x0000000709200000, 0x0000000709200000, 0x0000000709400000|  0%| F|  |TAMS 0x0000000709200000, 0x0000000709200000| Untracked 
+|  51|0x0000000709400000, 0x0000000709400000, 0x0000000709600000|  0%| F|  |TAMS 0x0000000709400000, 0x0000000709400000| Untracked 
+|  52|0x0000000709600000, 0x0000000709600000, 0x0000000709800000|  0%| F|  |TAMS 0x0000000709600000, 0x0000000709600000| Untracked 
+|  53|0x0000000709800000, 0x0000000709800000, 0x0000000709a00000|  0%| F|  |TAMS 0x0000000709800000, 0x0000000709800000| Untracked 
+|  54|0x0000000709a00000, 0x0000000709a00000, 0x0000000709c00000|  0%| F|  |TAMS 0x0000000709a00000, 0x0000000709a00000| Untracked 
+|  55|0x0000000709c00000, 0x0000000709c00000, 0x0000000709e00000|  0%| F|  |TAMS 0x0000000709c00000, 0x0000000709c00000| Untracked 
+|  56|0x0000000709e00000, 0x0000000709e00000, 0x000000070a000000|  0%| F|  |TAMS 0x0000000709e00000, 0x0000000709e00000| Untracked 
+|  57|0x000000070a000000, 0x000000070a000000, 0x000000070a200000|  0%| F|  |TAMS 0x000000070a000000, 0x000000070a000000| Untracked 
+|  58|0x000000070a200000, 0x000000070a200000, 0x000000070a400000|  0%| F|  |TAMS 0x000000070a200000, 0x000000070a200000| Untracked 
+|  59|0x000000070a400000, 0x000000070a400000, 0x000000070a600000|  0%| F|  |TAMS 0x000000070a400000, 0x000000070a400000| Untracked 
+|  60|0x000000070a600000, 0x000000070a600000, 0x000000070a800000|  0%| F|  |TAMS 0x000000070a600000, 0x000000070a600000| Untracked 
+|  61|0x000000070a800000, 0x000000070a800000, 0x000000070aa00000|  0%| F|  |TAMS 0x000000070a800000, 0x000000070a800000| Untracked 
+|  62|0x000000070aa00000, 0x000000070aa00000, 0x000000070ac00000|  0%| F|  |TAMS 0x000000070aa00000, 0x000000070aa00000| Untracked 
+|  63|0x000000070ac00000, 0x000000070ac00000, 0x000000070ae00000|  0%| F|  |TAMS 0x000000070ac00000, 0x000000070ac00000| Untracked 
+|  64|0x000000070ae00000, 0x000000070ae00000, 0x000000070b000000|  0%| F|  |TAMS 0x000000070ae00000, 0x000000070ae00000| Untracked 
+|  65|0x000000070b000000, 0x000000070b000000, 0x000000070b200000|  0%| F|  |TAMS 0x000000070b000000, 0x000000070b000000| Untracked 
+|  66|0x000000070b200000, 0x000000070b200000, 0x000000070b400000|  0%| F|  |TAMS 0x000000070b200000, 0x000000070b200000| Untracked 
+|  67|0x000000070b400000, 0x000000070b400000, 0x000000070b600000|  0%| F|  |TAMS 0x000000070b400000, 0x000000070b400000| Untracked 
+|  68|0x000000070b600000, 0x000000070b600000, 0x000000070b800000|  0%| F|  |TAMS 0x000000070b600000, 0x000000070b600000| Untracked 
+|  69|0x000000070b800000, 0x000000070b800000, 0x000000070ba00000|  0%| F|  |TAMS 0x000000070b800000, 0x000000070b800000| Untracked 
+|  70|0x000000070ba00000, 0x000000070ba00000, 0x000000070bc00000|  0%| F|  |TAMS 0x000000070ba00000, 0x000000070ba00000| Untracked 
+|  71|0x000000070bc00000, 0x000000070bc00000, 0x000000070be00000|  0%| F|  |TAMS 0x000000070bc00000, 0x000000070bc00000| Untracked 
+|  72|0x000000070be00000, 0x000000070be00000, 0x000000070c000000|  0%| F|  |TAMS 0x000000070be00000, 0x000000070be00000| Untracked 
+|  73|0x000000070c000000, 0x000000070c000000, 0x000000070c200000|  0%| F|  |TAMS 0x000000070c000000, 0x000000070c000000| Untracked 
+|  74|0x000000070c200000, 0x000000070c200000, 0x000000070c400000|  0%| F|  |TAMS 0x000000070c200000, 0x000000070c200000| Untracked 
+|  75|0x000000070c400000, 0x000000070c400000, 0x000000070c600000|  0%| F|  |TAMS 0x000000070c400000, 0x000000070c400000| Untracked 
+|  76|0x000000070c600000, 0x000000070c600000, 0x000000070c800000|  0%| F|  |TAMS 0x000000070c600000, 0x000000070c600000| Untracked 
+|  77|0x000000070c800000, 0x000000070c800000, 0x000000070ca00000|  0%| F|  |TAMS 0x000000070c800000, 0x000000070c800000| Untracked 
+|  78|0x000000070ca00000, 0x000000070ca00000, 0x000000070cc00000|  0%| F|  |TAMS 0x000000070ca00000, 0x000000070ca00000| Untracked 
+|  79|0x000000070cc00000, 0x000000070cc00000, 0x000000070ce00000|  0%| F|  |TAMS 0x000000070cc00000, 0x000000070cc00000| Untracked 
+|  80|0x000000070ce00000, 0x000000070ce00000, 0x000000070d000000|  0%| F|  |TAMS 0x000000070ce00000, 0x000000070ce00000| Untracked 
+|  81|0x000000070d000000, 0x000000070d000000, 0x000000070d200000|  0%| F|  |TAMS 0x000000070d000000, 0x000000070d000000| Untracked 
+|  82|0x000000070d200000, 0x000000070d200000, 0x000000070d400000|  0%| F|  |TAMS 0x000000070d200000, 0x000000070d200000| Untracked 
+|  83|0x000000070d400000, 0x000000070d400000, 0x000000070d600000|  0%| F|  |TAMS 0x000000070d400000, 0x000000070d400000| Untracked 
+|  84|0x000000070d600000, 0x000000070d600000, 0x000000070d800000|  0%| F|  |TAMS 0x000000070d600000, 0x000000070d600000| Untracked 
+|  85|0x000000070d800000, 0x000000070d800000, 0x000000070da00000|  0%| F|  |TAMS 0x000000070d800000, 0x000000070d800000| Untracked 
+|  86|0x000000070da00000, 0x000000070da00000, 0x000000070dc00000|  0%| F|  |TAMS 0x000000070da00000, 0x000000070da00000| Untracked 
+|  87|0x000000070dc00000, 0x000000070dc00000, 0x000000070de00000|  0%| F|  |TAMS 0x000000070dc00000, 0x000000070dc00000| Untracked 
+|  88|0x000000070de00000, 0x000000070de00000, 0x000000070e000000|  0%| F|  |TAMS 0x000000070de00000, 0x000000070de00000| Untracked 
+|  89|0x000000070e000000, 0x000000070e000000, 0x000000070e200000|  0%| F|  |TAMS 0x000000070e000000, 0x000000070e000000| Untracked 
+|  90|0x000000070e200000, 0x000000070e200000, 0x000000070e400000|  0%| F|  |TAMS 0x000000070e200000, 0x000000070e200000| Untracked 
+|  91|0x000000070e400000, 0x000000070e400000, 0x000000070e600000|  0%| F|  |TAMS 0x000000070e400000, 0x000000070e400000| Untracked 
+|  92|0x000000070e600000, 0x000000070e600000, 0x000000070e800000|  0%| F|  |TAMS 0x000000070e600000, 0x000000070e600000| Untracked 
+|  93|0x000000070e800000, 0x000000070e800000, 0x000000070ea00000|  0%| F|  |TAMS 0x000000070e800000, 0x000000070e800000| Untracked 
+|  94|0x000000070ea00000, 0x000000070ea00000, 0x000000070ec00000|  0%| F|  |TAMS 0x000000070ea00000, 0x000000070ea00000| Untracked 
+|  95|0x000000070ec00000, 0x000000070ec00000, 0x000000070ee00000|  0%| F|  |TAMS 0x000000070ec00000, 0x000000070ec00000| Untracked 
+|  96|0x000000070ee00000, 0x000000070ee00000, 0x000000070f000000|  0%| F|  |TAMS 0x000000070ee00000, 0x000000070ee00000| Untracked 
+|  97|0x000000070f000000, 0x000000070f000000, 0x000000070f200000|  0%| F|  |TAMS 0x000000070f000000, 0x000000070f000000| Untracked 
+|  98|0x000000070f200000, 0x000000070f200000, 0x000000070f400000|  0%| F|  |TAMS 0x000000070f200000, 0x000000070f200000| Untracked 
+|  99|0x000000070f400000, 0x000000070f400000, 0x000000070f600000|  0%| F|  |TAMS 0x000000070f400000, 0x000000070f400000| Untracked 
+| 100|0x000000070f600000, 0x000000070f600000, 0x000000070f800000|  0%| F|  |TAMS 0x000000070f600000, 0x000000070f600000| Untracked 
+| 101|0x000000070f800000, 0x000000070f800000, 0x000000070fa00000|  0%| F|  |TAMS 0x000000070f800000, 0x000000070f800000| Untracked 
+| 102|0x000000070fa00000, 0x000000070fa00000, 0x000000070fc00000|  0%| F|  |TAMS 0x000000070fa00000, 0x000000070fa00000| Untracked 
+| 103|0x000000070fc00000, 0x000000070fc00000, 0x000000070fe00000|  0%| F|  |TAMS 0x000000070fc00000, 0x000000070fc00000| Untracked 
+| 104|0x000000070fe00000, 0x000000070fe00000, 0x0000000710000000|  0%| F|  |TAMS 0x000000070fe00000, 0x000000070fe00000| Untracked 
+| 105|0x0000000710000000, 0x0000000710000000, 0x0000000710200000|  0%| F|  |TAMS 0x0000000710000000, 0x0000000710000000| Untracked 
+| 106|0x0000000710200000, 0x0000000710200000, 0x0000000710400000|  0%| F|  |TAMS 0x0000000710200000, 0x0000000710200000| Untracked 
+| 107|0x0000000710400000, 0x0000000710400000, 0x0000000710600000|  0%| F|  |TAMS 0x0000000710400000, 0x0000000710400000| Untracked 
+| 108|0x0000000710600000, 0x0000000710600000, 0x0000000710800000|  0%| F|  |TAMS 0x0000000710600000, 0x0000000710600000| Untracked 
+| 109|0x0000000710800000, 0x0000000710800000, 0x0000000710a00000|  0%| F|  |TAMS 0x0000000710800000, 0x0000000710800000| Untracked 
+| 110|0x0000000710a00000, 0x0000000710a00000, 0x0000000710c00000|  0%| F|  |TAMS 0x0000000710a00000, 0x0000000710a00000| Untracked 
+| 111|0x0000000710c00000, 0x0000000710c00000, 0x0000000710e00000|  0%| F|  |TAMS 0x0000000710c00000, 0x0000000710c00000| Untracked 
+| 112|0x0000000710e00000, 0x0000000710e00000, 0x0000000711000000|  0%| F|  |TAMS 0x0000000710e00000, 0x0000000710e00000| Untracked 
+| 113|0x0000000711000000, 0x0000000711000000, 0x0000000711200000|  0%| F|  |TAMS 0x0000000711000000, 0x0000000711000000| Untracked 
+| 114|0x0000000711200000, 0x0000000711200000, 0x0000000711400000|  0%| F|  |TAMS 0x0000000711200000, 0x0000000711200000| Untracked 
+| 115|0x0000000711400000, 0x0000000711400000, 0x0000000711600000|  0%| F|  |TAMS 0x0000000711400000, 0x0000000711400000| Untracked 
+| 116|0x0000000711600000, 0x0000000711600000, 0x0000000711800000|  0%| F|  |TAMS 0x0000000711600000, 0x0000000711600000| Untracked 
+| 117|0x0000000711800000, 0x0000000711800000, 0x0000000711a00000|  0%| F|  |TAMS 0x0000000711800000, 0x0000000711800000| Untracked 
+| 118|0x0000000711a00000, 0x0000000711a00000, 0x0000000711c00000|  0%| F|  |TAMS 0x0000000711a00000, 0x0000000711a00000| Untracked 
+| 119|0x0000000711c00000, 0x0000000711c00000, 0x0000000711e00000|  0%| F|  |TAMS 0x0000000711c00000, 0x0000000711c00000| Untracked 
+| 120|0x0000000711e00000, 0x0000000711e00000, 0x0000000712000000|  0%| F|  |TAMS 0x0000000711e00000, 0x0000000711e00000| Untracked 
+| 121|0x0000000712000000, 0x0000000712000000, 0x0000000712200000|  0%| F|  |TAMS 0x0000000712000000, 0x0000000712000000| Untracked 
+| 122|0x0000000712200000, 0x00000007123557c8, 0x0000000712400000| 66%| E|  |TAMS 0x0000000712200000, 0x0000000712200000| Complete 
+| 123|0x0000000712400000, 0x0000000712600000, 0x0000000712600000|100%| E|CS|TAMS 0x0000000712400000, 0x0000000712400000| Complete 
+| 124|0x0000000712600000, 0x0000000712800000, 0x0000000712800000|100%| E|CS|TAMS 0x0000000712600000, 0x0000000712600000| Complete 
+| 125|0x0000000712800000, 0x0000000712a00000, 0x0000000712a00000|100%| E|CS|TAMS 0x0000000712800000, 0x0000000712800000| Complete 
+| 126|0x0000000712a00000, 0x0000000712c00000, 0x0000000712c00000|100%| E|CS|TAMS 0x0000000712a00000, 0x0000000712a00000| Complete 
+
+Card table byte_map: [0x000002abb9fb0000,0x000002abba7a0000] _byte_map_base: 0x000002abb6799000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0x000002aba4f18cf0, (CMBitMap*) 0x000002aba4f18d30
+ Prev Bits: [0x000002abbaf90000, 0x000002abbeed8000)
+ Next Bits: [0x000002abbeee0000, 0x000002abc2e28000)
+
+Polling page: 0x000002aba4f70000
+
+Metaspace:
+
+Usage:
+  Non-class:     11.80 MB used.
+      Class:      1.28 MB used.
+       Both:     13.08 MB used.
+
+Virtual space:
+  Non-class space:       64.00 MB reserved,      11.94 MB ( 19%) committed,  1 nodes.
+      Class space:        1.00 GB reserved,       1.38 MB ( <1%) committed,  1 nodes.
+             Both:        1.06 GB reserved,      13.31 MB (  1%) committed. 
+
+Chunk freelists:
+   Non-Class:  3.99 MB
+       Class:  14.61 MB
+        Both:  18.60 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 21.00 MB
+CDS: off
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+ - handle_deallocations: 1.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 0.
+num_arena_births: 118.
+num_arena_deaths: 0.
+num_vsnodes_births: 2.
+num_vsnodes_deaths: 0.
+num_space_committed: 213.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 0.
+num_chunks_taken_from_freelist: 188.
+num_chunk_merges: 0.
+num_chunk_splits: 96.
+num_chunks_enlarged: 27.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120000Kb used=201Kb max_used=201Kb free=119798Kb
+ bounds [0x000002abb1820000, 0x000002abb1a90000, 0x000002abb8d50000]
+CodeHeap 'profiled nmethods': size=120000Kb used=1222Kb max_used=1222Kb free=118777Kb
+ bounds [0x000002aba9d50000, 0x000002aba9fc0000, 0x000002abb1280000]
+CodeHeap 'non-nmethods': size=5760Kb used=1251Kb max_used=1266Kb free=4509Kb
+ bounds [0x000002abb1280000, 0x000002abb14f0000, 0x000002abb1820000]
+ total_blobs=1314 nmethods=743 adapters=484
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 0.667 Thread 0x000002abc59d73c0 nmethod 732 0x000002aba9e72c90 code [0x000002aba9e72e20, 0x000002aba9e73018]
+Event: 0.668 Thread 0x000002abc59d73c0  733       3       java.security.AccessController::checkContext (49 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 733 0x000002aba9e73110 code [0x000002aba9e73320, 0x000002aba9e73978]
+Event: 0.669 Thread 0x000002abc59d73c0  734       3       java.security.AccessController::doPrivileged (17 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 734 0x000002aba9e73b90 code [0x000002aba9e73d80, 0x000002aba9e74138]
+Event: 0.669 Thread 0x000002abc59d73c0  736   !   3       sun.awt.image.URLImageSource::checkSecurity (42 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 736 0x000002aba9e74310 code [0x000002aba9e744e0, 0x000002aba9e74908]
+Event: 0.669 Thread 0x000002abc59d73c0  737       3       sun.java2d.StateTrackableDelegate::markDirty (6 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 737 0x000002aba9e74a90 code [0x000002aba9e74c20, 0x000002aba9e74d58]
+Event: 0.669 Thread 0x000002abc59d73c0  738       1       java.util.zip.Inflater$InflaterZStreamRef::address (5 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 738 0x000002abb1851690 code [0x000002abb1851820, 0x000002abb18518f8]
+Event: 0.669 Thread 0x000002abc59d73c0  739       3       java.lang.Boolean::valueOf (14 bytes)
+Event: 0.669 Thread 0x000002abc59d73c0 nmethod 739 0x000002aba9e74e10 code [0x000002aba9e74fa0, 0x000002aba9e75118]
+Event: 0.671 Thread 0x000002abc59d73c0  740       3       java.awt.ImageMediaEntry::parseflags (31 bytes)
+Event: 0.671 Thread 0x000002abc59d73c0 nmethod 740 0x000002aba9e75190 code [0x000002aba9e75340, 0x000002aba9e75598]
+Event: 0.672 Thread 0x000002abc59d73c0  741 % !   3       sun.awt.image.PNGImageDecoder::produceImage @ 960 (1917 bytes)
+Event: 0.672 Thread 0x000002abc59d6170 nmethod 722% 0x000002abb1851990 code [0x000002abb1851b20, 0x000002abb1851e18]
+Event: 0.672 Thread 0x000002abc59d6170  723  s    4       java.io.BufferedInputStream::read (49 bytes)
+Event: 0.674 Thread 0x000002abc59d6170 nmethod 723 0x000002abb1851f90 code [0x000002abb1852120, 0x000002abb1852508]
+Event: 0.674 Thread 0x000002abc59d6170  744 %     4       sun.awt.image.PNGImageDecoder::filterRow @ 47 (460 bytes)
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (6 events):
+Event: 0.011 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\java.dll
+Event: 0.138 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\jimage.dll
+Event: 0.177 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\awt.dll
+Event: 0.463 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\freetype.dll
+Event: 0.464 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\fontmanager.dll
+Event: 0.597 Loaded shared library C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\zip.dll
+
+Deoptimization events (16 events):
+Event: 0.488 Thread 0x000002aba4ead0a0 DEOPT PACKING pc=0x000002aba9d66867 sp=0x000000e5d91fc780
+Event: 0.488 Thread 0x000002aba4ead0a0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5d91fbba0 mode 0
+Event: 0.652 Thread 0x000002abc5b6dec0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000002abb184bef4 relative=0x00000000000003d4
+Event: 0.652 Thread 0x000002abc5b6dec0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000002abb184bef4 method=java.lang.StringLatin1.newString([BII)Ljava/lang/String; @ 1 c2
+Event: 0.652 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002abb184bef4 sp=0x000000e5db2feca0
+Event: 0.652 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d69a3 sp=0x000000e5db2fec80 mode 2
+Event: 0.674 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002aba9e6ed6d sp=0x000000e5db2ff270
+Event: 0.674 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5db2fe710 mode 0
+Event: 0.674 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002aba9e6ed6d sp=0x000000e5db2ff270
+Event: 0.674 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5db2fe710 mode 0
+Event: 0.675 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002aba9e6ed6d sp=0x000000e5db2ff270
+Event: 0.675 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5db2fe710 mode 0
+Event: 0.675 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002aba9e6ed6d sp=0x000000e5db2ff270
+Event: 0.675 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5db2fe710 mode 0
+Event: 0.675 Thread 0x000002abc5b6dec0 DEOPT PACKING pc=0x000002aba9e6ed6d sp=0x000000e5db2ff270
+Event: 0.676 Thread 0x000002abc5b6dec0 DEOPT UNPACKING pc=0x000002abb12d7143 sp=0x000000e5db2fe710 mode 0
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (13 events):
+Event: 0.165 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/ClassNotFoundException'{0x0000000712b9bb08}: sun/awt/resources/spi/awtProvider> (0x0000000712b9bb08) 
+thrown [s\src\hotspot\share\classfile\systemDictionary.cpp, line 256]
+Event: 0.200 Thread 0x000002aba4ead0a0 Exception <a 'java/io/FileNotFoundException'{0x0000000712bf5828}> (0x0000000712bf5828) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 516]
+Event: 0.207 Thread 0x000002aba4ead0a0 Exception <a 'java/io/FileNotFoundException'{0x0000000712822c60}> (0x0000000712822c60) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 516]
+Event: 0.256 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x00000007128635f8}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object)'> (0x00000007128635f8) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.384 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x00000007128b1018}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000007128b1018) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.391 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x00000007128db030}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000007128db030) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.393 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x0000000712957698}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, int, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)'> (0x0000000712957698) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.397 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x000000071297ce58}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, int, java.lang.Object)'> (0x000000071297ce58) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.417 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/ClassNotFoundException'{0x0000000712634d80}: com/sun/swing/internal/plaf/metal/resources/spi/metalProvider> (0x0000000712634d80) 
+thrown [s\src\hotspot\share\classfile\systemDictionary.cpp, line 256]
+Event: 0.418 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/ClassNotFoundException'{0x0000000712638960}: com/sun/swing/internal/plaf/basic/resources/spi/basicProvider> (0x0000000712638960) 
+thrown [s\src\hotspot\share\classfile\systemDictionary.cpp, line 256]
+Event: 0.439 Thread 0x000002abc5b6ca80 Exception <a 'java/lang/NoSuchMethodError'{0x00000007128f1dd0}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual(java.lang.Object, java.lang.Object)'> (0x00000007128f1dd0) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.457 Thread 0x000002aba4ead0a0 Exception <a 'java/lang/NoSuchMethodError'{0x00000007126e7b60}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object)'> (0x00000007126e7b60) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+Event: 0.655 Thread 0x000002abc5b6dec0 Exception <a 'java/lang/NoSuchMethodError'{0x0000000712286940}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object, int, int, int, int, int)'> (0x0000000712286940) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 759]
+
+VM Operations (6 events):
+Event: 0.416 Executing VM operation: HandshakeAllThreads
+Event: 0.416 Executing VM operation: HandshakeAllThreads done
+Event: 0.448 Executing VM operation: HandshakeAllThreads
+Event: 0.448 Executing VM operation: HandshakeAllThreads done
+Event: 0.487 Executing VM operation: HandshakeAllThreads
+Event: 0.487 Executing VM operation: HandshakeAllThreads done
+
+Events (20 events):
+Event: 0.652 loading class java/text/DigitList
+Event: 0.652 loading class java/text/DigitList done
+Event: 0.652 loading class java/math/RoundingMode
+Event: 0.652 loading class java/math/RoundingMode done
+Event: 0.652 loading class java/text/DontCareFieldPosition
+Event: 0.652 loading class java/text/DontCareFieldPosition done
+Event: 0.652 loading class java/text/DontCareFieldPosition$1
+Event: 0.652 loading class java/text/Format$FieldDelegate
+Event: 0.652 loading class java/text/Format$FieldDelegate done
+Event: 0.652 loading class java/text/DontCareFieldPosition$1 done
+Event: 0.653 loading class sun/awt/image/PNGImageDecoder
+Event: 0.653 loading class sun/awt/image/ImageDecoder
+Event: 0.653 loading class sun/awt/image/ImageDecoder done
+Event: 0.653 loading class sun/awt/image/PNGImageDecoder done
+Event: 0.653 loading class sun/awt/image/PNGFilterInputStream
+Event: 0.653 loading class sun/awt/image/PNGFilterInputStream done
+Event: 0.653 loading class java/util/zip/InflaterInputStream
+Event: 0.654 loading class java/util/zip/InflaterInputStream done
+Event: 0.664 loading class sun/awt/image/BufImgSurfaceManager
+Event: 0.664 loading class sun/awt/image/BufImgSurfaceManager done
+
+
+Dynamic libraries:
+0x00007ff65a1b0000 - 0x00007ff65a1be000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\javaw.exe
+0x00007ffd71fb0000 - 0x00007ffd721a8000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffd71080000 - 0x00007ffd7113d000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffd6fbd0000 - 0x00007ffd6fec6000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffd6f670000 - 0x00007ffd6f770000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffd5c580000 - 0x00007ffd5c59b000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\VCRUNTIME140.dll
+0x00007ffd44300000 - 0x00007ffd44317000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\jli.dll
+0x00007ffd707a0000 - 0x00007ffd7093f000 	C:\Windows\System32\USER32.dll
+0x00007ffd6f920000 - 0x00007ffd6f942000 	C:\Windows\System32\win32u.dll
+0x00007ffd5ef30000 - 0x00007ffd5f1ca000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ffd70b80000 - 0x00007ffd70bab000 	C:\Windows\System32\GDI32.dll
+0x00007ffd709c0000 - 0x00007ffd70a5e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffd6fab0000 - 0x00007ffd6fbc7000 	C:\Windows\System32\gdi32full.dll
+0x00007ffd6ff50000 - 0x00007ffd6ffed000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffd70d50000 - 0x00007ffd70d7f000 	C:\Windows\System32\IMM32.DLL
+0x00007ffd5dbc0000 - 0x00007ffd5dbcc000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\vcruntime140_1.dll
+0x00007ffd3e5e0000 - 0x00007ffd3e66d000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\msvcp140.dll
+0x00007ffcefc50000 - 0x00007ffcf08b2000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\server\jvm.dll
+0x00007ffd70c20000 - 0x00007ffd70cd0000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffd6fff0000 - 0x00007ffd70090000 	C:\Windows\System32\sechost.dll
+0x00007ffd70f50000 - 0x00007ffd71073000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffd6ff20000 - 0x00007ffd6ff47000 	C:\Windows\System32\bcrypt.dll
+0x00007ffd6ebf0000 - 0x00007ffd6ec3b000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ffd232b0000 - 0x00007ffd232b9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffd70bb0000 - 0x00007ffd70c1b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffd65f50000 - 0x00007ffd65f77000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffd67760000 - 0x00007ffd6776a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffd6ea60000 - 0x00007ffd6ea72000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ffd6d4f0000 - 0x00007ffd6d502000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffd6a900000 - 0x00007ffd6a90a000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\jimage.dll
+0x00007ffd66940000 - 0x00007ffd66b24000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffd4f0c0000 - 0x00007ffd4f0f4000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffd6f890000 - 0x00007ffd6f912000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffd55220000 - 0x00007ffd55245000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\java.dll
+0x00007ffd4dce0000 - 0x00007ffd4dcf8000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\zip.dll
+0x00007ffd71390000 - 0x00007ffd71afc000 	C:\Windows\System32\SHELL32.dll
+0x00007ffd6d6f0000 - 0x00007ffd6de8d000 	C:\Windows\SYSTEM32\windows.storage.dll
+0x00007ffd70430000 - 0x00007ffd70783000 	C:\Windows\System32\combase.dll
+0x00007ffd6f090000 - 0x00007ffd6f0be000 	C:\Windows\SYSTEM32\Wldp.dll
+0x00007ffd701b0000 - 0x00007ffd7027d000 	C:\Windows\System32\OLEAUT32.dll
+0x00007ffd712e0000 - 0x00007ffd7138d000 	C:\Windows\System32\SHCORE.dll
+0x00007ffd70d80000 - 0x00007ffd70dd5000 	C:\Windows\System32\shlwapi.dll
+0x00007ffd6f5a0000 - 0x00007ffd6f5c4000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffd198b0000 - 0x00007ffd19a40000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\awt.dll
+0x00007ffd69770000 - 0x00007ffd69800000 	C:\Windows\SYSTEM32\apphelp.dll
+0x00007ffd6d200000 - 0x00007ffd6d22f000 	C:\Windows\system32\DWMAPI.DLL
+0x00007ffd6cf70000 - 0x00007ffd6d00e000 	C:\Windows\system32\uxtheme.dll
+0x00007ffd37270000 - 0x00007ffd37395000 	C:\Windows\system32\opengl32.dll
+0x00007ffd40970000 - 0x00007ffd4099c000 	C:\Windows\SYSTEM32\GLU32.dll
+0x00007ffd70a60000 - 0x00007ffd70b74000 	C:\Windows\System32\MSCTF.dll
+0x00007ffd71150000 - 0x00007ffd7127b000 	C:\Windows\System32\ole32.dll
+0x00007ffd3cd00000 - 0x00007ffd3cece000 	C:\Windows\system32\d3d9.dll
+0x00007ffd63530000 - 0x00007ffd636f3000 	C:\Windows\System32\DriverStore\FileRepository\u0374485.inf_amd64_abfb7dc77f8ab6ca\B374507\aticfx64.dll
+0x00007ffd01fc0000 - 0x00007ffd01ff3000 	C:\Windows\System32\DriverStore\FileRepository\u0374485.inf_amd64_abfb7dc77f8ab6ca\B374507\atiu9p64.dll
+0x00007ffd01270000 - 0x00007ffd01fbc000 	C:\Windows\System32\DriverStore\FileRepository\u0374485.inf_amd64_abfb7dc77f8ab6ca\B374507\atiumd64.dll
+0x0000000059eb0000 - 0x000000005ad7c000 	C:\Windows\System32\DriverStore\FileRepository\u0374485.inf_amd64_abfb7dc77f8ab6ca\B374507\atiumd6a.dll
+0x00007ffd60360000 - 0x00007ffd60390000 	C:\Windows\SYSTEM32\amdihk64.dll
+0x00007ffd63790000 - 0x00007ffd637cb000 	C:\Windows\SYSTEM32\dxcore.dll
+0x00007ffd6fed0000 - 0x00007ffd6ff1e000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffd23e80000 - 0x00007ffd23f07000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\freetype.dll
+0x00007ffd23a00000 - 0x00007ffd23ad3000 	C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\fontmanager.dll
+0x00007ffd3b590000 - 0x00007ffd3b689000 	C:\Windows\SYSTEM32\textinputframework.dll
+0x00007ffd6a690000 - 0x00007ffd6a782000 	C:\Windows\System32\CoreMessaging.dll
+0x00007ffd689e0000 - 0x00007ffd68d3b000 	C:\Windows\System32\CoreUIComponents.dll
+0x00007ffd6e7c0000 - 0x00007ffd6e7f3000 	C:\Windows\SYSTEM32\ntmarta.dll
+0x00007ffd6c1a0000 - 0x00007ffd6c2f7000 	C:\Windows\SYSTEM32\wintypes.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Users\Najila\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\server;C:\Windows\System32\DriverStore\FileRepository\u0374485.inf_amd64_abfb7dc77f8ab6ca\B374507
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: Home
+java_class_path (initial): C:\Users\Najila\eclipse-workspace\Animation\bin
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4246732800                                {product} {ergonomic}
+   size_t MaxNewSize                               = 2548039680                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 4246732800                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:/Users/Najila/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143/jre/bin/server;C:/Users/Najila/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143/jre/bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\yt-dlp;C:\Program Files\get_iplayer;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Najila\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Najila\AppData\Local\Programs\Python\Python312\;C:\Users\Najila\AppData\Local\Microsoft\WindowsApps;C:\Users\Najila\.dotnet\tools;C:\Users\Najila\AppData\Local\Programs\Microsoft VS Code\bin;C:\Windows\system32;
+USERNAME=Najila
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
+TMP=C:\Users\Najila\AppData\Local\Temp
+TEMP=C:\Users\Najila\AppData\Local\Temp
+
+
+
+Periodic native trim disabled
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+OS uptime: 1 days 15:06 hours
+
+CPU: total 8 (initial active 8) (8 cores per cpu, 2 threads per core) family 23 model 24 stepping 1 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt
+Processor Information for all 8 processors :
+  Max Mhz: 2100, Current Mhz: 2100, Mhz Limit: 2100
+
+Memory: 4k page, system-wide physical 16192M (496M free)
+TotalPageFile size 65344M (AvailPageFile size 4M)
+current process WorkingSet (physical memory assigned to process): 89M, peak: 89M
+current process commit charge ("private bytes"): 378M, peak: 379M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.10+7) for windows-amd64 JRE (17.0.10+7), built on Jan 16 2024 23:25:11 by "admin" with MS VC++ 16.10 / 16.11 (VS2019)
+
+END.
